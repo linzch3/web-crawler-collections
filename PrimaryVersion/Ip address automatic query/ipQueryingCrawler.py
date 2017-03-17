@@ -1,4 +1,5 @@
 # -*- coding:utf-8 -*-
+#for details, see:http://blog.csdn.net/linzch3/article/details/62273278
 import requests
 from bs4 import BeautifulSoup
 import bs4
