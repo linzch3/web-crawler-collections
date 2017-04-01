@@ -11,11 +11,6 @@
 [2]:http://blog.csdn.net/linzch3/article/details/62273278
 
 
-###3.[pdfBatchDownloader][3](☆☆☆)
-批量下载开放服务器的pdf文件
-[3]:http://blog.csdn.net/linzch3/article/details/68948802
-
-
 
 
 
