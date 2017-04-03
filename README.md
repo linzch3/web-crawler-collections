@@ -15,8 +15,10 @@
 
 [3]:http://blog.csdn.net/linzch3/article/details/68948802
 
+### 4.GovernmentAffairsCrawler (★★☆)
+爬取[广东省广东省人民政府首页][广东省广东省人民政府首页]的政务公开新闻对应的链接、标题、发布日期、正文。
 
-
+[广东省广东省人民政府首页]:http://www.gd.gov.cn/govpub/xxts/index.htm
 
 
 
