@@ -7,11 +7,10 @@
 '''
 import jieba
 import numpy
-import codecs
 import pandas
 
 #设置文件的编码，对文件进行读入，相比边读遍转码方法更实用
-with codecs.open("content.csv", 'r', 'GBK') as f:
+with open("content.csv", 'r', encoding='GBK') as f:
     content = f.read()
 
 #使用jieba进行分词，将分词结果存储在一个list中
