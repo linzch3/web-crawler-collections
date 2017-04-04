@@ -8,9 +8,14 @@
 import jieba
 import numpy
 import pandas
+import os
 
-#设置文件的编码，对文件进行读入，相比边读遍转码方法更实用
-with open("content.csv", 'r', encoding='GBK') as f:
+#若要处理weibo_search_中山大学.csv，要使用utf-8编码
+#若要处理content.csv，要使用GBK编码
+#..代表上级目录
+filepath="../outputFiles/weibo_search_中山大学.csv"
+filename=filepath.split("/")[-1].split(".")[0]
+with open(filepath, 'r', encoding='utf-8') as f:
     content = f.read()
 
 #使用jieba进行分词，将分词结果存储在一个list中
@@ -70,4 +75,7 @@ edgecolor：图形贴边缘颜色（The figure patch edge color）
 plt.axis("off")          #关闭显示数轴（以及对应的数字）
 plt.imshow(wordcloud)    #用matplotlib包对图片进行绘制
 plt.show(wordcloud)      #显示图像
+if not os.path.exists("outputFiles"):
+    os.mkdir("outputFiles")
+wordcloud.to_file('outputFiles/'+filename+'_wordcloud.jpg')
 plt.close()

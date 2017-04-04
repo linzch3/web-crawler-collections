@@ -9,6 +9,7 @@ import numpy
 import pandas
 import requests
 import traceback
+import os
 
 commonAPI = 'http://m.weibo.cn/api/statuses/repostTimeline?id=%d&page=%d'
 
@@ -78,6 +79,9 @@ completed = pandas.read_csv("completed.csv",dtype=(numpy.int64, numpy.int64))
 #待完成的工作
 needToGet = allNeed[pandas.DataFrame.all(~allNeed.isin(completed),axis=1)]
 
+if not os.path.exists("outputFiles"):
+    os.mkdir("outputFiles")
+    
 while needToGet.size>0:
     completedPagesIds = []
     completedPages = []
@@ -98,7 +102,7 @@ while needToGet.size>0:
             #将完成爬取的评论添加到content.csv中
             contentDF = pandas.DataFrame({'contents': contents})    
             contentDF.to_csv(
-                'content.csv',
+                'outputFiles/content.csv',
                 mode='a', header=False, index=False
             )
             #记录已经完成的工作
