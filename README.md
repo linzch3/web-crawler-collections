@@ -21,9 +21,17 @@
 [广东省广东省人民政府首页]:http://www.gd.gov.cn/govpub/xxts/index.htm
 
 ### 5.WeiboCommentsCrawler (★★★)
+该爬虫分为两种：
+
+1.通过id进行爬虫的WeiboCommentsCrawlerByIds
+
 微博上每一条首发的微博都有特定的id，通过指定id，爬取特定单条微博被转发后附上的评论，通过jieba进行分词并用wordcloud绘制对应的词云。
 
 其中指定id的方法就是：将id添加到与代码在同目录下的weiboIds.csv文件中
+
+2.WeiboCommentsCrawlerByKeywords
+
+对关键词搜索出来的页面进行爬虫
 
 
 
