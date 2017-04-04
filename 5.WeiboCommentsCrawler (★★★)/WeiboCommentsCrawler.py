@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-说明：可通过添加微博话题的id到weiboIds.csv，程序会抓取该文件制定的id的数据
+说明：可通过添加特定单条首条微博的id到weiboIds.csv，程序会抓取该文件设定的id的数据
 需要注意：在初次运行该代码时，必须保证completed.csv里面只有两行数据(第一行为：page,pagesId 第二行为空行)
 """
 import time
