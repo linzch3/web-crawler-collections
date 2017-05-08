@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-本程序演示如下操作：抓取微博上一个页面的信息，打印该页面下的评论
-可帮助理解WeiboCommentsCrawler.py的实现逻辑
+本程序演示如下操作：抓取微博上一个页面的信息，打印该页面下的
+转发评论、转发日期、转发用户id、转发用户的用户名、转发用户的头像链接
+
+可帮助理解WeiboRepostCommentsCrawlerByIds.py和WeiboCommentsCrawlerByIds.py的实现逻辑
 """
 import json
 import requests
@@ -24,7 +26,10 @@ dataURL = 'http://m.weibo.cn/api/statuses/repostTimeline?id=%d&page=%d' % (weibo
 jsonString = getHTMLText(dataURL)   #网页的信息是以JSON格式传输的
 jsonObject = json.loads(jsonString)
 for data in jsonObject['data']:
-    print(data['raw_text'])         #评论在JSON对象的data属性的raw_text属性下
-
+    print(data.get('raw_text')+'\n')         #评论在JSON对象的data属性的raw_text属性下
+    print(data.get('created_at')+'\n')
+    print(data.get('user').get('profile_image_url')+'\n')
+    print(data.get('user').get('screen_name')+'\n')
+    print(data.get('user').get('id'))
 
 
