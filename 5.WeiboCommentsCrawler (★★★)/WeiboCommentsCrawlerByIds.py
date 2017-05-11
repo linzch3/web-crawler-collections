@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 程序功能：可通过添加特定单条首条微博的id到weiboIds.csv，程序会抓取对应id的
-转发评论、转发日期、转发用户id、转发用户的用户名、转发用户的头像链接 5个子信息
+评论内容、评论用户用户名、评论用户id、评论时间4个子信息
 
 需要注意：在初次运行该代码时，必须保证completed.csv里面只有两行数据
 (第一行为：page,pagesId 第二行为空行)
@@ -14,7 +14,7 @@ import requests
 import traceback
 import os
 
-commonRepostAPI = 'http://m.weibo.cn/api/statuses/repostTimeline?id=%d&page=%d'
+commonCommentsAPI = 'https://m.weibo.cn/api/comments/show?id=%d&page=%d'
 
 headers = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36'}
 
@@ -36,7 +36,7 @@ def getJSONObject(weiboId, page):
 
     while do:
         time.sleep(sleepSecond)
-        dataURL = commonRepostAPI % (weiboId, page)
+        dataURL = commonCommentsAPI % (weiboId, page)
         print("处理 URL: %s" % (dataURL))
 
         jsonString = getHTMLText(dataURL)
@@ -95,16 +95,18 @@ while needToGet.size>0:
         page = row['page']
         
         try:
-            comments = []#转发后附上的评论
-            date=[]      #转发日期
-            user_id=[]   #转发用户的id
-            user_name=[] #转发用户的用户名
-            user_profile_image_url=[] #转发用户的头像链接
+            like_counts = []#点赞数
+            comments=[]
+            date=[]      #评论日期
+            user_id=[]   #评论用户的id
+            user_name=[] #评论用户的用户名
+            user_profile_image_url=[] #评论用户的头像链接
 
             jsonObject = getJSONObject(pid, page)
             
             for data in jsonObject['data']:
-                comments.append(data.get('raw_text'))      
+                comments.append(data.get('text'))
+                like_counts.append(data.get('like_counts'))      
                 date.append(data.get('created_at'))
 
                 user_name.append(data.get('user').get('screen_name'))
@@ -117,9 +119,9 @@ while needToGet.size>0:
             'user_id':user_id,
             'user_name':user_name,
             'user_profile_image_url':user_profile_image_url,
-            'comments': comments
+            'like_counts': like_counts
             })    
-            contentFileName='outputFiles/id'+str(pid)+'-RepostComment.csv'
+            contentFileName='outputFiles/id'+str(pid)+'-Comment.csv'
             contentDF.to_csv(
                 contentFileName,
                 mode='a', header=False,index=False
