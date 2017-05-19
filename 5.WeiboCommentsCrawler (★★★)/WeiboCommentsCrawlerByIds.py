@@ -29,11 +29,11 @@ def getHTMLText(url,Code='utf-8'):
         return ""
         
 ##得到网页对应的JSON对象
+sleepSecond = 1
 def getJSONObject(weiboId, page):
     do = True
-    sleepSecond = 1
     jsonObject = ""
-
+    global sleepSecond #全局休眠变量
     while do:
         time.sleep(sleepSecond)
         dataURL = commonCommentsAPI % (weiboId, page)
@@ -115,11 +115,12 @@ while needToGet.size>0:
 
             #将完成爬取的数据添加到content.csv中
             contentDF = pandas.DataFrame({
-            'date':date,
-            'user_id':user_id,
-            'user_name':user_name,
-            'user_profile_image_url':user_profile_image_url,
-            'like_counts': like_counts
+            'a_date':date,
+            'b_user_id':user_id,
+            'c_user_name':user_name,
+            'd_like_counts': like_counts,
+            'e_comments':comments,
+            'f_user_profile_image_url':user_profile_image_url
             })    
             contentFileName='outputFiles/id'+str(pid)+'-Comment.csv'
             contentDF.to_csv(
