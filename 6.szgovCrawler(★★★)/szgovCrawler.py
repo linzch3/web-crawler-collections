@@ -122,7 +122,7 @@ for page in range(1,pageNum+1):
             'd_askDate':askDate,
             'e_replyDate':replyDate,
             'f_askContents':askContents,
-            'g_replyContens':replyContens
+            'g_replyContents':replyContens
             })
             
             #将数据按 接受信箱 分类保存

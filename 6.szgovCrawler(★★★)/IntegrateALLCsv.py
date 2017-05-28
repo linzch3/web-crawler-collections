@@ -18,7 +18,7 @@ names=['编号','标题','接收信箱','询问日期','回复日期','询问内
 for index,filename in enumerate(os.listdir('./ShenZhen_gov_info')):
     file=pandas.read_csv('./ShenZhen_gov_info/'+filename,names=names,encoding='GBK')
     if index==0:
-        file.to_csv("整合的所有信息.csv",encoding='GBK',mode='w', header=True,index=False)
+        file.to_csv("所有部门.csv",encoding='GBK',mode='w', header=True,index=False)
     else:
-        file.to_csv("整合的所有信息.csv",encoding='GBK',mode='a', header=False,index=False)
+        file.to_csv("所有部门.csv",encoding='GBK',mode='a', header=False,index=False)
     print("merge:"+filename)
