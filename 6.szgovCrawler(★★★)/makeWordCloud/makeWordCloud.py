@@ -21,7 +21,8 @@ fileWithSize=pandas.DataFrame({
         'filename':filenames,
         'size':sizes
    })
-
+if not os.path.exists("../词云图"):
+    os.mkdir("../词云图")
 #得到 咨询内容前30的部门加上所有部门对应的文件名
 first31files=fileWithSize.sort_values(by=['size'], ascending=False)[0:31]
                                      
@@ -74,9 +75,7 @@ for filename in first31files.filename:
     Pandas(segment='合同', 计数=402)
     Pandas(segment='17', 计数=343)
     """
-    if not os.path.exists("outputFiles"):
-        os.mkdir("outputFiles")
-    filepath='outputFiles/'+filename.split('.')[0]+'_wordcloud.jpg'
+    filepath='../词云图/'+filename.split('.')[0]+'_wordcloud.jpg'
     wordcloud.to_file(filepath)
     print('save file :'+filepath)
 #   plt.close()

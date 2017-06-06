@@ -18,8 +18,8 @@ fileWithSize=pandas.DataFrame({
         'size':sizes
    })
 
-if not os.path.exists("词频统计"):
-    os.mkdir("词频统计")
+if not os.path.exists("../词频统计"):
+    os.mkdir("../词频统计")
 
 data=[]
 #得到 咨询内容前30的部门加上所有部门对应的文件名
@@ -60,7 +60,7 @@ for filename in first31files.filename:
     
     data.append(segStat)
     
-    filepath='词频统计/'+str(cnt)+'.'+filename.split('.')[0]+'_词频统计.csv'
+    filepath='../词频统计/'+str(cnt)+'.'+filename.split('.')[0]+'_词频统计.csv'
     segStat.to_csv(filepath,mode='w',header=True,index=False)
     print("得到 <"+filename+"> 的词频统计信息")
     cnt=cnt+1

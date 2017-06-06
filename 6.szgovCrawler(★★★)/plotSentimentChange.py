@@ -1,7 +1,4 @@
 # -*- coding: utf-8 -*-
-'''
-绘制年度情感值的变化，但是使用snowNLP的效率貌似很低，最后没有得到结果
-'''
 import pandas
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
