@@ -29,26 +29,22 @@ def getHTMLText(url,Code='utf-8'):
         return ""
         
 ##得到网页对应的JSON对象
-def getJSONObject(weiboId, page):
-    do = True
-    sleepSecond = 1
-    jsonObject = ""
-
-    while do:
-        time.sleep(sleepSecond)
-        dataURL = commonRepostAPI % (weiboId, page)
-        print("处理 URL: %s" % (dataURL))
-
-        jsonString = getHTMLText(dataURL)
-        jsonObject = json.loads(jsonString)
-    
-        if 'data' not in jsonObject:
-            sleepSecond = sleepSecond+5
-            print("遭受限制~~~，%s 秒后重试" % (sleepSecond))
-        else :
-            do = False
-    
-    return jsonObject
+def getJsonObject(weiboId, page,Code='utf-8'):
+    cnt=0
+    url = commonRepostAPI % (weiboId, page)
+    while cnt<=100:
+        try:
+            print("处理URL:"+url)
+            r = requests.get(url, headers=headers, timeout=3000)
+            r.raise_for_status()
+            r.encoding = Code
+            return r.json()
+        except:
+            cnt=cnt+1
+            traceback.print_exc()
+            print('\n\n\n\ntry again....\n\n\n\n')
+    print('100 times try,but failed........')
+    return None 
 
 #可通过添加话题的id到weiboIds.csv中，
 weiboIds = pandas.read_csv("weiboIds.csv").weiboId
@@ -61,7 +57,7 @@ pages = []    #页面所在页数
 print("预处理阶段 开始")
 for pid in weiboIds:
     page = 1
-    jsonObject = getJSONObject(pid, page) #得到话题的第一页
+    jsonObject = getJsonObject(pid, page) #得到话题的第一页
     totalPage = jsonObject['max']         #话题下的页面总数
     for page in range(1, totalPage+1):    
         pagesIds.append(pid)
@@ -101,7 +97,7 @@ while needToGet.size>0:
             user_name=[] #转发用户的用户名
             user_profile_image_url=[] #转发用户的头像链接
 
-            jsonObject = getJSONObject(pid, page)
+            jsonObject = getJsonObject(pid, page)
             
             for data in jsonObject['data']:
                 comments.append(data.get('raw_text'))      
