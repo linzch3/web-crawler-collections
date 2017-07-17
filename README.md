@@ -59,3 +59,8 @@
 爬取中山市政府市长信箱（http://www.zs.gov.cn/main/zmhd/）中的所有数据
 
 具体包含：诉求编号、所属部门、诉求类型、处理状态、诉求标题、递交时间、诉求来源、事发地点、诉求内容、回复意见
+
+### 10.hzgovCrawler(★☆☆) 
+爬取惠州市人民政府网页（http://www.huizhou.gov.cn/wlwzlist.shtml?method=letters4bsznList3&pager.offset=0）中关于网络问政的内容
+
+具体包含：来信人、来信主题、受文单位、来信时间、来信类型、办理状态、来信内容、最终回文单位、最终办理时间、最终处理结果 共10项数据
