@@ -47,20 +47,26 @@
 
 ### 7.zhgovCrawler (★★☆)
 
-爬取珠海市政府网页（http://www.zhuhai.gov.cn/hd/zxts_44606/tsfk/ ）中关于投诉以及咨询的内容
+爬取珠海市政府网页中关于投诉以及咨询的内容
 
 具体包含：主题、日期、投诉/咨询人、处理单位、处理状态、受理意见
+
+[珠海市政府网页]:http://www.zhuhai.gov.cn/hd/zxts_44606/tsfk/
 
 ### 8.wenkuCrawler(☆☆☆)
 
 爬取百度文库文章（后台以图片形式储存的一种）对应的图片
 
 ### 9.zsgovCrawler(★☆☆)
-爬取中山市政府市长信箱 （http://www.zs.gov.cn/main/zmhd/） 中的所有数据
+爬取中山市政府市长信箱[中山市政府市长信箱] 中的所有数据
 
 具体包含：诉求编号、所属部门、诉求类型、处理状态、诉求标题、递交时间、诉求来源、事发地点、诉求内容、回复意见
 
+[中山市政府市长信箱]: http://www.zs.gov.cn/main/zmhd/
+
 ### 10.hzgovCrawler(★☆☆) 
-爬取惠州市人民政府网页（http://www.huizhou.gov.cn/wlwzlist.shtml?method=letters4bsznList3&pager.offset=0）中关于网络问政的内容
+爬取惠州市人民政府网页[惠州市人民政府网页]中关于网络问政的内容
 
 具体包含：来信人、来信主题、受文单位、来信时间、来信类型、办理状态、来信内容、最终回文单位、最终办理时间、最终处理结果 共10项数据
+
+[惠州市人民政府网页]:http://www.huizhou.gov.cn/wlwzlist.shtml?method=letters4bsznList3&pager.offset=0
