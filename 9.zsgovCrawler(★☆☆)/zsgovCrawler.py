@@ -49,7 +49,7 @@ def getMaxPage(url):
     return math.ceil(test['total']/len(test['rows']))#总数目除以每页的数目，再向上取整
     
 def getData(basicUrl,maxPage):
-    for page in range(829,maxPage+1):
+    for page in range(0,maxPage+1):
         jsonData=getJsonObject(basicUrl.format(page=page))
         ids=[i['id'] for i in jsonData['rows']]
         诉求编号=[]
