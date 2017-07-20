@@ -44,7 +44,6 @@ def getData(basicUrl,maxPage,fileEncoding):
     startPage=0
     endPage=int(maxPage)+1#注意加一
     cnt=0#爬取页面计数器
-    #1100
     for page in range(startPage,endPage,20):#步长为20
         #得到每个页面的源代码
         htmlText=getHTMLText(basicUrl.format(step=page))
@@ -84,24 +83,25 @@ def getData(basicUrl,maxPage,fileEncoding):
             办理状态.append(question[5].getText().strip())  
             来信内容.append(question[6].getText().strip())  
             
-#            #最终的回复 需要根据是否处于 正在办理中 状态区分对待
-#            if '办理中' in question[5].getText().strip():
-#                reply=detailList[-2].find_all('td')[1::2]
-#            elif '已转入' in question[5].getText().strip():
-#                reply=detailList[-2].find_all('td')[1::2]
-#            else:
-#                reply=detailList[-5].find_all('td')[1::2]
-
+           #最终的回复
+            assignFlag=False
+            reply=[]
             for detail in detailList[::-1]:
                 tmp=detail.find_all('td')
                 if(len(tmp)==6 and tmp[0].getText().strip()=='回文单位'):
-                    reply=tmp[1::2]
+                        reply=tmp[1::2]
+                        assignFlag=True
+                        break
             
-            最终回文单位.append(reply[0].getText().strip())
-            最终办理时间.append(reply[1].getText().strip())
-            最终处理结果.append(reply[2].getText().strip())
+            if assignFlag:
+                最终回文单位.append(reply[0].getText().strip())
+                最终办理时间.append(reply[1].getText().strip())
+                最终处理结果.append(reply[2].getText().strip())
+            else:
+                最终回文单位.append('None')
+                最终办理时间.append('None')
+                最终处理结果.append('None')                
             
-
         #保存数据
         contentDF=pandas.DataFrame({
                   'A来信人':来信人,
@@ -120,9 +120,13 @@ def getData(basicUrl,maxPage,fileEncoding):
         else:
             contentDF.to_csv('惠州市数据.csv',mode='a',encoding=fileEncoding,header=False,index=False)
         print('保存第'+str(int(page/20)+1)+'页的数据......')   
-        cnt=(cnt+1)%100
-        if cnt==99:
-            time.sleep(1)              
+        cnt=(cnt+1)%41
+        if cnt%40==0:
+            time.sleep(180) 
+            print("休眠3分钟~~~") 
+        elif cnt%20==0:
+            time.sleep(60) 
+            print("休眠1分钟~~~")             
         
 basicUrl='http://www.huizhou.gov.cn/wlwzlist.shtml?method=letters4bsznList3&pager.offset={step}'
 maxPage=getMaxPage(basicUrl)
