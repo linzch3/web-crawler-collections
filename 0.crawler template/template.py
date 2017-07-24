@@ -19,7 +19,7 @@ def getHTMLText(url,code='utf-8'):
     while cnt<=100:
         try:
             print("处理URL:"+url)
-            r = requests.get(url, timeout=3000)
+            r = requests.get(url,headers=headers,timeout=3000)
             r.raise_for_status()
             r.encoding = code
             return r.text
@@ -70,4 +70,5 @@ def getData(basicUrl,maxPage,fileEncoding):
         
 basicUrl='xxx{page}'
 maxPage=getMaxPage(basicUrl)
+print('最大页面数为'+str(maxPage))
 getData(basicUrl,maxPage,'utf-8')

@@ -15,8 +15,9 @@ def getHTMLText(url,code='utf-8'):
     while cnt<=100:
         try:
             print("处理URL:"+url)
-            r = requests.get(url, timeout=3000)
+            r = requests.get(url,headers=headers,timeout=3000)
             r.raise_for_status()
+            print('编码方式'+r.apparent_encoding)#注意判断编码方式
             r.encoding = code
             return r.text
         except:
