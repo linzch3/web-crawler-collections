@@ -1,5 +1,8 @@
 # WebCrawler_Collection
 --------------------------------------
+### 0.crawler template(★★☆)
+爬取政府网页数据的模板代码
+
 ### 1.[doubanCrawler][1] (★☆☆)
 爬取豆瓣TOP250电影的评分、评价人数、短评等信息，并在其保存在txt文件中。
 
@@ -70,3 +73,10 @@
 具体包含：来信人、来信主题、受文单位、来信时间、来信类型、办理状态、来信内容、最终回文单位、最终办理时间、最终处理结果 共10项数据
 
 [惠州市人民政府网页]:http://www.huizhou.gov.cn/wlwzlist.shtml?method=letters4bsznList3&pager.offset=0
+
+### 11.zqgovCrawler(★☆☆) 
+爬取[肇庆市政府网页][肇庆市政府网页]中关于网友问政的内容
+
+具体包含：问政标题、 网友名称、问政日期、浏览次数、问政内容、回复内容、牵头部门 共7项数据
+
+[肇庆市政府网页]:http://wz.zhaoqing.gov.cn/wzpt/index.php?act=political&op=political_list1&curpage=0
