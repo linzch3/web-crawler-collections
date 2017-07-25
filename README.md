@@ -80,3 +80,11 @@
 具体包含：问政标题、 网友名称、问政日期、浏览次数、问政内容、回复内容、牵头部门 共7项数据
 
 [肇庆市政府网页]:http://wz.zhaoqing.gov.cn/wzpt/index.php?act=political&op=political_list1&curpage=0
+
+### 12.jmgovCrawler(★☆☆)
+爬取[江门市市长信箱网页][江门市市长信箱网页]数据和[江门市网上咨询网页][江门市网上咨询网页]数据：
+
+具体包含：事项标题、事项地点、来信时间、来信内容、答复部门、回复时间、回复内容 共7项数据
+
+[江门市市长信箱网页]:http://www.jiangmen.gov.cn/gzhd/szxxnew/default.html
+[江门市网上咨询网页]:http://www.jiangmen.gov.cn/gzhd/wszxnew/default.html
