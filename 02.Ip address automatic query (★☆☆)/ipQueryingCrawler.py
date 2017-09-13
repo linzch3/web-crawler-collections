@@ -31,3 +31,14 @@ html=getHTMLText(inputIP,url)
 data=getData(html)
 for i in data:
     print(i)
+'''
+另外有个类似的网站可以查询ip地址对应在地球的位置：
+
+使用方法：http://freegeoip.net/json/ + 你的ip地址 进行GET请求后可得到一个json数据。
+
+比如：http://freegeoip.net/json/120.236.174.148
+
+{"ip":"120.236.174.148","country_code":"CN","country_name":"China","region_code":"44","region_name":"Guangdong","city":"Guangzhou","zip_code":"","time_zone":"Asia/Shanghai","latitude":23.1167,"longitude":113.25,"metro_code":0}
+
+就是我的ip地址所在地区了。相比代码测试的那个网站，这个网站提供的数据更为精确和丰富。
+'''
