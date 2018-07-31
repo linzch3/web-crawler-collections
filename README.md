@@ -92,3 +92,5 @@
 ### 13.vadloCrawler(☆☆☆)
 爬取 http://vadlo.com/cartoons.php 上的动漫图片
 
+### 14.journalCrawler(★☆☆)
+爬取两个文献网站的PDF文献
